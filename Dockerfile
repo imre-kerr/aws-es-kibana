@@ -1,8 +1,9 @@
-FROM node:8
+FROM node:8-alpine
 
 WORKDIR /app
 
-RUN useradd -ms /bin/bash aws-es-kibana
+RUN addgroup aws-es-kibana
+RUN adduser -S -G aws-es-kibana aws-es-kibana
 RUN chown aws-es-kibana:aws-es-kibana /app
 
 COPY package.json /app
